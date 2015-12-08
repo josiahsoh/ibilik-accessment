@@ -1,0 +1,9 @@
+<h1>Edit Your property's details </h1>
+
+<form action="/properties/<%= @property.id %>" method="POST">
+<input type="hidden" name="_method" value="patch">
+	<textarea name="description"><%= @property.description %></textarea>
+	<input type="submit" value="Submit" id="submit_btn" />
+</form>
+<a href="/properties/<%= @property.id%>">Back To Your listed Properties</a>
+

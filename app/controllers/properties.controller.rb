@@ -11,12 +11,28 @@ end
 
 get '/properties/:id' do 
   @property = Property.find(params[:id])
-  @user = @property.user 
+  @user = @property.user
   erb :"property/dashboard"  
 end
 
-# #view all properties
-# get 'properties/:id' do
-# 	erb :"property/dashboard"
-# end
-# view question
+# update existing user
+patch '/properties/:id' do
+	property = Property.find(params[:id])
+	property.update(description: params[:description])
+	@user = property.user
+ 	redirect "/properties/#{property.id}"
+end
+
+# delete specific property
+delete '/properties/:id' do
+	property = Property.find(params[:id])
+	property.destroy
+	#@user = property.user
+	erb :"user/dashboard"
+end
+
+#edit
+get '/properties/:id/edit' do
+	@property = Property.find(params[:id])
+	erb :"property/edit"
+end

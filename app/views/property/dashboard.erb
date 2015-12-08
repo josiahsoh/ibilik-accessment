@@ -1,29 +1,13 @@
-<h1> This is your listed properties </h1>
-
+<h1>This is your property listed</h1>
 Details: <%= @property.description %>
+<br />
 
+<br />
+  <a href="/properties/<%= @property.id %>/edit">Edit Property</a>
 
+<br>
+  <form action="/properties/<%= @property.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete" />
+  </form>
 <br />
-<br />
-<a href="/properties/<%= @properties.id %>/edit">Edit</a>
-<form action="/properties/<%= @properties.id %>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="delete" />
-</form>
-<br />
-<div>
-	<a href="/comments/new?question=<%= @property.id%>">Give your comment</a>
-</div>
-<div>
-	<a href="/users/<%= @user.id%>">Back To Your Profile</a>	
-</div>
-<!-- <div>
-	<h1>Your answer</h1>
-	<div>
-		<ol>
-			<% @question.answers.each do |answer| %>
-			<li><%= answer.answers_body%> - <%= @user.name %></li>
-			<% end %>
-		</ol>
-	</div>
-</div> -->

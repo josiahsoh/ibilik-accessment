@@ -1,0 +1,18 @@
+
+<h3>User Profile</h3>
+<h1>Welcome <%= @user.name %></h1>
+Name: <%= @user.name %>
+<br>
+Email: <%= @user.email %>
+<br>
+<a href="/users/<%= @user.id %>/edit"><button>Edit profile</button></a>
+<form action="/users/<%= @user.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
+</form>
+<br>
+
+<a href="/properties/new"><button>Post Your properties here</button></a>
+
+
+<a href="/users/logout"><button>Logout</button></a>

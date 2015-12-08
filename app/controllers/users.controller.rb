@@ -33,8 +33,16 @@ end
 # create new user
 post '/users' do
 	# Do something processing with user input
- 	user = User.create(name: params[:name], email: params[:email], password: params[:password])
- 	redirect "/users/#{user.id}"
+ 	user = User.new(name: params[:name], email: params[:email], password: params[:password])
+  if user.save
+   	redirect "/users/#{user.id}"
+  else
+    redirect "/error"
+  end
+end
+
+get '/error' do
+  erb :"user/error"
 end
 
 #edit user profile

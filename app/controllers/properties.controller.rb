@@ -1,8 +1,9 @@
-# create new propertyform
+# View new property form
 get '/properties/new' do 
 	 erb :"property/new"
 end
 
+# Create new properties
 post '/properties' do
 	property = Property.create(description: params[:description], user_id: params[:user_id])
 	redirect "/properties/#{property.id}"
@@ -28,7 +29,8 @@ delete '/properties/:id' do
 	property = Property.find(params[:id])
 	property.destroy
 	#@user = property.user
-	erb :"user/dashboard"
+	# erb :"user/dashboard"
+	redirect "/users/#{session[:user_id]}"
 end
 
 #edit
